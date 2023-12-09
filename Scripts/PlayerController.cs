@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     private float jumpingPower = 16f;
     private bool isFascingRight = true;
 
+    public static Vector3 position;
+    private Vector3 currentPosition;
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -16,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,13 +27,12 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        Debug.Log(horizontal);
-        if(Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
 
-        if(Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
@@ -50,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     private void Flip()
     {
-        if(isFascingRight && horizontal < 0f || !isFascingRight && horizontal > 0f)
+        if (isFascingRight && horizontal < 0f || !isFascingRight && horizontal > 0f)
         {
             isFascingRight = !isFascingRight;
             Vector3 localScale = transform.localScale;
