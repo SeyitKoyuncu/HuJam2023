@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
     private bool keyWasPressed;
     public void Update()
     {
-        if (Input.GetKey(KeyCode.Escape) && !keyWasPressed)
+        if (Input.GetKey(KeyCode.Escape) && !keyWasPressed && IntroTextController.isIntroEnd)
         {
             // Toggle the flag
             keyWasPressed = true;
