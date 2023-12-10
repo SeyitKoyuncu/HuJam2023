@@ -24,6 +24,9 @@ public class Path : MonoBehaviour
             if (Vector2.Distance(transform.position, points[pointsIndex].position) < 0.01f)
             {
                 pointsIndex += 1;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
             }
 
             // If reached the last point, reset to the first point

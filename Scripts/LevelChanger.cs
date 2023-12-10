@@ -12,9 +12,18 @@ public class LevelChanger : MonoBehaviour
     [SerializeField] GameObject[] firstLevelObjects;
     [SerializeField] GameObject[] secondLevelObjects;
 
+    [SerializeField] GameObject charachter;
+    SpriteRenderer charachterSprite;
+    [SerializeField] private Sprite firstLevelSprite;
+    [SerializeField] private Sprite secondLevelSprite;
+
     void Start()
     {
-        if(secondLevelObjects != null)
+        charachterSprite = charachter.GetComponent<SpriteRenderer>();
+        if (firstLevelSprite != null)
+            charachterSprite.sprite = firstLevelSprite;
+
+        if (secondLevelObjects != null)
         {
             foreach (GameObject platform2 in secondLevelObjects)
             {
@@ -46,6 +55,7 @@ public class LevelChanger : MonoBehaviour
         isInFirstLevel = !isInFirstLevel;
         if (firstLevelObjects != null && secondLevelObjects != null)
         {
+            ChangeChrachter();
             if (isInFirstLevel == true)
             {
                 foreach (GameObject platform1 in firstLevelObjects)
@@ -68,6 +78,18 @@ public class LevelChanger : MonoBehaviour
                     platform2.SetActive(true);
                 }
             }
+        }
+    }
+    private void ChangeChrachter()
+    {
+        if (charachterSprite.sprite == firstLevelSprite)
+        {
+            charachterSprite.sprite = secondLevelSprite;
+        }
+
+        else
+        {
+            charachterSprite.sprite = firstLevelSprite;
         }
     }
 }

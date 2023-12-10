@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -71,5 +73,12 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+        SceneManager.LoadScene(1);
     }
+
+    private void Fire()
+    {
+
+    }
+
 }
